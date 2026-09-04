@@ -1,3 +1,36 @@
 * Теория: COUNT, SUM, AVG, MIN, MAX, группировка, HAVING.
 * Практика: подсчёт статистики, группировка по полям, фильтрация групп.
 * Задание: посчитать количество записей, среднюю зарплату по отделам, отфильтровать группы по условию.
+
+Подготовительные этапы:
+
+Каждый этап можно контролировать на небольшой выборке данных
+
+table test_users limit 10;
+
+
+В ранее созданную таблицу test_users добавить колонку с зп
+
+ALTER TABLE test_users
+ADD COLUMN salary NUMERIC(10, 2);
+
+Потом заполнить сгенерированными данными
+
+UPDATE test_users
+SET salary = (random() * 120000 + 30000)::numeric(10, 2);
+
+Добавить колонку с отделом
+
+ALTER TABLE test_users
+ADD COLUMN department VARCHAR(100);
+
+Заполнить данными
+
+UPDATE test_users
+SET department = (
+    CASE (random() * 3)::int
+        WHEN 0 THEN 'IT'
+        WHEN 1 THEN 'logistic'
+        WHEN 2 THEN 'sales'
+    END
+);
