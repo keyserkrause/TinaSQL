@@ -34,3 +34,51 @@ SET department = (
         WHEN 2 THEN 'sales'
     END
 );
+
+-- COUNT
+SELECT COUNT(*)
+FROM test_users;
+
+-- SUM
+SELECT SUM(salary)
+FROM test_users;
+
+-- AVG
+SELECT AVG(salary)
+FROM test_users;
+
+-- MIN
+SELECT MIN(salary)
+FROM test_users;
+
+-- MAX
+SELECT MAX(salary)
+FROM test_users;
+
+-- Количество записей по отделам
+SELECT department,
+    COUNT(*)
+FROM test_users
+GROUP BY department;
+
+-- Средняя зп по отделам
+SELECT department,
+    AVG(salary)
+FROM test_users
+GROUP BY department;
+
+-- Фильтрация групп по средней зп
+SELECT department,
+    AVG(salary)
+FROM test_users
+GROUP BY department
+HAVING AVG(salary) > 90000;
+
+-- Количество записей и средняя зп по отделам
+-- со средней зп > 90000
+SELECT department,
+    COUNT(*),
+    AVG(salary)
+FROM test_users
+GROUP BY department
+HAVING AVG(salary) > 90000;
