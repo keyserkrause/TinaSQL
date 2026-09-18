@@ -1,3 +1,21 @@
 * Теория: типы join INNER, LEFT, RIGHT, FULL, CROSS; условия соединения.
 * Практика: написание запросов с JOIN для объединения таблиц.
 * Задание: объединить 2–3 таблицы, получить итоговую выборку с данными из всех таблиц.
+
+SELECT
+    products.name,
+    categories.name,
+    products.price
+FROM products
+LEFT JOIN categories
+    ON products.category_id = categories.id
+LIMIT 10;
+
+SELECT
+    products.name,
+    categories.name,
+    products.price
+FROM products
+RIGHT JOIN categories
+    ON products.category_id = categories.id
+LIMIT 10;
