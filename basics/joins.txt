@@ -2,6 +2,7 @@
 * Практика: написание запросов с JOIN для объединения таблиц.
 * Задание: объединить 2–3 таблицы, получить итоговую выборку с данными из всех таблиц.
 
+-- LEFT JOIN
 SELECT
     products.name,
     categories.name,
@@ -11,6 +12,7 @@ LEFT JOIN categories
     ON products.category_id = categories.id
 LIMIT 10;
 
+-- RIGHT JOIN
 SELECT
     products.name,
     categories.name,
@@ -18,4 +20,33 @@ SELECT
 FROM products
 RIGHT JOIN categories
     ON products.category_id = categories.id
+LIMIT 10;
+
+-- INNER JOIN
+SELECT
+    products.name,
+    categories.name,
+    products.price
+FROM products
+INNER JOIN categories
+    ON products.category_id = categories.id
+LIMIT 10;
+
+-- FULL JOIN
+SELECT
+    products.name,
+    categories.name,
+    products.price
+FROM products
+FULL JOIN categories
+    ON products.category_id = categories.id
+LIMIT 10;
+
+-- CROSS JOIN
+SELECT
+    products.name,
+    categories.name,
+    products.price
+FROM products
+CROSS JOIN categories
 LIMIT 10;
